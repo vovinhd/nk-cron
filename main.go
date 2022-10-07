@@ -157,14 +157,15 @@ func ScheduleOneSinalNotificaion(ctx context.Context, logger runtime.Logger, db 
 		return "", runtime.NewError("api is unhappy", 13)
 	}
 
-	apiRes := ApiSuccessResponse{}
-	if err := json.Unmarshal([]byte(payload), &value); err != nil {
-		return "", runtime.NewError("unable to unmarshal payload", 13)
-	}
-	userId := ctx.Value(runtime.RUNTIME_CTX_USER_ID).(string)
-	if err := SaveNotificationId(apiRes.Id, userId, value.ChallengeSlug, logger, db); err != nil {
-		return string(apiResponsebody), runtime.NewError("unable to save notification data", 13)
-	}
+	// apiRes := ApiSuccessResponse{}
+	// if err := json.Unmarshal([]byte(payload), &value); err != nil {
+	// 	return "", runtime.NewError("unable to unmarshal payload", 13)
+	// }
+	// userId := ctx.Value(runtime.RUNTIME_CTX_USER_ID).(string)
+	// if err := SaveNotificationId(apiRes.Id, userId, value.ChallengeSlug, logger, db); err != nil {
+	// 	logger.Error(err.Error())
+	// 	return string(apiResponsebody), runtime.NewError("unable to save notification data", 13)
+	// }
 
 	return string(apiResponsebody), nil
 }
